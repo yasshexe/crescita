@@ -13,6 +13,14 @@ PROJECT_LINK_REPLACEMENTS = [
         r'(<h3>\s*TUPE\s*<br>\s*BROTHERS\s*<br>\s*ASSOCIATES\s*</h3>.*?<a\s+)href="#contact"',
         'https://tupe-brothers-associates.onrender.com/',
     ),
+    (
+        r'(<a\s+href=")#"(\s+class="social-card social-instagram")',
+        'https://www.instagram.com/crescita_media/',
+    ),
+    (
+        r'(<a\s+href=")#"(\s+class="social-card social-whatsapp")',
+        'https://wa.me/917058628004',
+    ),
 ]
 
 
@@ -20,9 +28,14 @@ def _add_project_links(response):
     html = response.content.decode(response.charset)
 
     for pattern, url in PROJECT_LINK_REPLACEMENTS:
+        if 'social-' in pattern:
+            replacement = rf'\1{url}" target="_blank" rel="noopener noreferrer"\2'
+        else:
+            replacement = rf'\1href="{url}" target="_blank" rel="noopener noreferrer"'
+
         html = re.sub(
             pattern,
-            rf'\1href="{url}" target="_blank" rel="noopener noreferrer"',
+            replacement,
             html,
             count=1,
             flags=re.DOTALL,
