@@ -15,7 +15,7 @@ PROJECT_LINK_REPLACEMENTS = [
     ),
     (
         r'(<a\s+href=")#"(\s+class="social-card social-instagram")',
-        'https://www.instagram.com/crescitamedia/',
+        'https://www.instagram.com/crescita_media/',
     ),
     (
         r'(<a\s+href=")#"(\s+class="social-card social-whatsapp")',
