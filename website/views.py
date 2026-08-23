@@ -59,3 +59,7 @@ def home(request):
 
     response = render(request, "website/home.html")
     return _add_project_links(response)
+
+
+def about(request):
+    return render(request, "website/about.html")
