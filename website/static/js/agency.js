@@ -1,0 +1,1334 @@
+/* =========================================================
+   CRESCITA MEDIA
+   KINETIC / CHAOTIC AGENCY INTERACTIONS
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    /* =====================================================
+       GLOBAL STATE
+    ===================================================== */
+
+    const prefersReducedMotion =
+        window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    const isDesktop =
+        window.matchMedia("(min-width: 951px)").matches;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+
+    let smoothMouseX = mouseX;
+    let smoothMouseY = mouseY;
+
+    let scrollY = window.scrollY;
+    let previousScrollY = scrollY;
+    let scrollVelocity = 0;
+    let smoothVelocity = 0;
+
+    let ticking = false;
+
+
+    /* =====================================================
+       MOBILE NAVIGATION
+    ===================================================== */
+
+    const menuButton =
+        document.querySelector(".mobile-menu-button");
+
+    const mobileNavigation =
+        document.querySelector(".mobile-navigation");
+
+
+    const closeMenu = () => {
+
+        if (!mobileNavigation) return;
+
+        mobileNavigation.classList.remove("open");
+
+        document.body.classList.remove("menu-open");
+
+        if (menuButton) {
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                "false"
+            );
+
+            menuButton.textContent = "MENU";
+        }
+    };
+
+
+    if (menuButton && mobileNavigation) {
+
+        menuButton.addEventListener("click", () => {
+
+            const isOpen =
+                mobileNavigation.classList.toggle("open");
+
+            document.body.classList.toggle(
+                "menu-open",
+                isOpen
+            );
+
+            menuButton.setAttribute(
+                "aria-expanded",
+                String(isOpen)
+            );
+
+            menuButton.textContent =
+                isOpen ? "CLOSE" : "MENU";
+
+        });
+
+
+        mobileNavigation
+            .querySelectorAll("a")
+            .forEach(link => {
+
+                link.addEventListener(
+                    "click",
+                    closeMenu
+                );
+
+            });
+    }
+
+
+    document.addEventListener("keydown", event => {
+
+        if (event.key === "Escape") {
+            closeMenu();
+        }
+
+    });
+
+
+    /* =====================================================
+       SMOOTH ANCHOR SCROLLING
+    ===================================================== */
+
+    document
+        .querySelectorAll('a[href^="#"]')
+        .forEach(link => {
+
+            link.addEventListener(
+                "click",
+                event => {
+
+                    const targetId =
+                        link.getAttribute("href");
+
+                    if (
+                        !targetId ||
+                        targetId === "#"
+                    ) {
+                        return;
+                    }
+
+                    const target =
+                        document.querySelector(targetId);
+
+                    if (!target) {
+                        return;
+                    }
+
+                    event.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth",
+                        block: "start"
+                    });
+
+                }
+            );
+
+        });
+
+
+    /* =====================================================
+       SCROLL REVEAL
+    ===================================================== */
+
+    const revealObserver =
+        new IntersectionObserver(
+            entries => {
+
+                entries.forEach(entry => {
+
+                    if (!entry.isIntersecting) {
+                        return;
+                    }
+
+                    entry.target.classList.add(
+                        "visible"
+                    );
+
+                    revealObserver.unobserve(
+                        entry.target
+                    );
+
+                });
+
+            },
+            {
+                threshold: 0.1,
+                rootMargin: "0px 0px -70px 0px"
+            }
+        );
+
+
+    document
+        .querySelectorAll(".section-reveal")
+        .forEach(element => {
+
+            revealObserver.observe(element);
+
+        });
+
+
+    /* =====================================================
+       AUTOMATIC REVEAL TARGETS
+    ===================================================== */
+
+    [
+        ".services-grid",
+        ".project-card",
+        ".social-card"
+    ]
+        .forEach(selector => {
+
+            document
+                .querySelectorAll(selector)
+                .forEach(element => {
+
+                    element.classList.add(
+                        "section-reveal"
+                    );
+
+                    revealObserver.observe(
+                        element
+                    );
+
+                });
+
+        });
+
+
+    /* =====================================================
+       HEADER SCROLL EFFECT
+    ===================================================== */
+
+    const header =
+        document.querySelector(".site-header");
+
+
+    const updateHeader = () => {
+
+        scrollY = window.scrollY;
+
+        scrollVelocity =
+            scrollY - previousScrollY;
+
+        previousScrollY = scrollY;
+
+        if (!header) return;
+
+        header.classList.toggle(
+            "scrolled",
+            scrollY > 30
+        );
+
+        header.style.setProperty(
+            "--scroll-speed",
+            Math.min(
+                Math.abs(scrollVelocity),
+                30
+            )
+        );
+
+    };
+
+
+    window.addEventListener(
+        "scroll",
+        updateHeader,
+        {
+            passive: true
+        }
+    );
+
+
+    /* =====================================================
+       MOUSE TRACKING
+    ===================================================== */
+
+    if (!prefersReducedMotion.matches) {
+
+        window.addEventListener(
+            "mousemove",
+            event => {
+
+                mouseX = event.clientX;
+                mouseY = event.clientY;
+
+            },
+            {
+                passive: true
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CURSOR GLOW
+    ===================================================== */
+
+    let cursorGlow = null;
+
+
+    if (
+        isDesktop &&
+        !prefersReducedMotion.matches
+    ) {
+
+        cursorGlow =
+            document.createElement("div");
+
+        cursorGlow.className =
+            "crescita-cursor-glow";
+
+        document.body.appendChild(
+            cursorGlow
+        );
+
+    }
+
+
+    /* =====================================================
+       MAGNETIC ELEMENTS
+    ===================================================== */
+
+    const magneticElements =
+        document.querySelectorAll(
+            ".primary-button, .nav-cta, .submit-button"
+        );
+
+
+    /* =====================================================
+       STICKERS
+    ===================================================== */
+
+    const stickers =
+        document.querySelectorAll(
+            ".sticker"
+        );
+
+
+    const stickerData = [];
+
+
+    stickers.forEach(
+        (sticker, index) => {
+
+            stickerData.push({
+                element: sticker,
+                strength:
+                    index % 2 === 0
+                        ? 16
+                        : -12,
+                rotation:
+                    index % 2 === 0
+                        ? -8
+                        : 8,
+                phase:
+                    Math.random() * Math.PI * 2,
+                speed:
+                    0.001 +
+                    Math.random() * 0.001
+            });
+
+        }
+    );
+
+
+    /* =====================================================
+       HERO VISUAL
+    ===================================================== */
+
+    const heroVisual =
+        document.querySelector(
+            ".hero-visual"
+        );
+
+
+    /* =====================================================
+       HERO PARALLAX + CURSOR SYSTEM
+    ===================================================== */
+
+    const animateEverything = time => {
+
+        if (
+            !prefersReducedMotion.matches
+        ) {
+
+            smoothMouseX +=
+                (mouseX - smoothMouseX) * 0.08;
+
+            smoothMouseY +=
+                (mouseY - smoothMouseY) * 0.08;
+
+
+            const normalizedX =
+                smoothMouseX /
+                window.innerWidth -
+                0.5;
+
+
+            const normalizedY =
+                smoothMouseY /
+                window.innerHeight -
+                0.5;
+
+
+            /* ---------- CURSOR GLOW ---------- */
+
+            if (cursorGlow) {
+
+                cursorGlow.style.transform =
+                    `translate3d(
+                        ${smoothMouseX}px,
+                        ${smoothMouseY}px,
+                        0
+                    )`;
+
+            }
+
+
+            /* ---------- STICKERS ---------- */
+
+            stickerData.forEach(data => {
+
+                const wave =
+                    Math.sin(
+                        time * data.speed +
+                        data.phase
+                    );
+
+                const x =
+                    normalizedX *
+                    data.strength;
+
+                const y =
+                    normalizedY *
+                    data.strength;
+
+                const floatY =
+                    wave * 7;
+
+
+                data.element.style.setProperty(
+                    "--mouse-x",
+                    `${x}px`
+                );
+
+                data.element.style.setProperty(
+                    "--mouse-y",
+                    `${y + floatY}px`
+                );
+
+                data.element.style.setProperty(
+                    "--chaos-rotate",
+                    `${data.rotation + wave * 2}deg`
+                );
+
+            });
+
+
+            /* ---------- HERO VISUAL ---------- */
+
+            if (heroVisual && isDesktop) {
+
+                const heroX =
+                    normalizedX * 10;
+
+                const heroY =
+                    normalizedY * 6;
+
+
+                heroVisual.style.transform =
+                    `translate3d(
+                        ${heroX}px,
+                        ${heroY}px,
+                        0
+                    )`;
+
+            }
+
+
+            /* ---------- MAGNETIC BUTTONS ---------- */
+
+            magneticElements.forEach(
+                element => {
+
+                    if (
+                        !element.matches(":hover")
+                    ) {
+                        return;
+                    }
+
+
+                    const rect =
+                        element.getBoundingClientRect();
+
+
+                    const localX =
+                        smoothMouseX -
+                        rect.left -
+                        rect.width / 2;
+
+
+                    const localY =
+                        smoothMouseY -
+                        rect.top -
+                        rect.height / 2;
+
+
+                    element.style.transform =
+                        `translate3d(
+                            ${localX * 0.15}px,
+                            ${localY * 0.15}px,
+                            0
+                        )`;
+
+                }
+            );
+
+        }
+
+
+        /* ---------- SCROLL VELOCITY ---------- */
+
+        smoothVelocity +=
+            (scrollVelocity - smoothVelocity) *
+            0.08;
+
+
+        const velocity =
+            Math.max(
+                -1,
+                Math.min(
+                    1,
+                    smoothVelocity / 25
+                )
+            );
+
+
+        document.documentElement.style.setProperty(
+            "--scroll-velocity",
+            velocity
+        );
+
+
+        scrollVelocity *= 0.88;
+
+
+        requestAnimationFrame(
+            animateEverything
+        );
+
+    };
+
+
+    requestAnimationFrame(
+        animateEverything
+    );
+
+
+    /* =====================================================
+       MAGNETIC BUTTON RESET
+    ===================================================== */
+
+    magneticElements.forEach(
+        element => {
+
+            element.addEventListener(
+                "mouseleave",
+                () => {
+
+                    element.style.transform = "";
+
+                }
+            );
+
+        }
+    );
+
+
+    /* =====================================================
+       PROJECT TILT
+    ===================================================== */
+
+    if (
+        isDesktop &&
+        !prefersReducedMotion.matches
+    ) {
+
+        document
+            .querySelectorAll(".project-image")
+            .forEach(project => {
+
+                const inner =
+                    project.querySelector(
+                        ".mockup-window, .phone-mockup, .ai-card"
+                    );
+
+
+                if (!inner) return;
+
+
+                project.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            project.getBoundingClientRect();
+
+
+                        const x =
+                            (
+                                event.clientX -
+                                rect.left
+                            ) /
+                            rect.width -
+                            0.5;
+
+
+                        const y =
+                            (
+                                event.clientY -
+                                rect.top
+                            ) /
+                            rect.height -
+                            0.5;
+
+
+                        const rotateX =
+                            y * -5;
+
+
+                        const rotateY =
+                            x * 5;
+
+
+                        inner.style.transform =
+                            `perspective(1000px)
+                             rotateX(${rotateX}deg)
+                             rotateY(${rotateY}deg)
+                             scale(1.025)`;
+
+                    }
+                );
+
+
+                project.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        inner.style.transform =
+                            "";
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* =====================================================
+       PROJECT IMAGE PARALLAX
+    ===================================================== */
+
+    if (
+        !prefersReducedMotion.matches
+    ) {
+
+        document
+            .querySelectorAll(".project-image")
+            .forEach(project => {
+
+                project.dataset.parallax =
+                    String(
+                        Math.random() * 20 + 10
+                    );
+
+            });
+
+    }
+
+
+    /* =====================================================
+   AUTOMATIC NAV TEXT SCRAMBLE
+===================================================== */
+
+const scrambleElements =
+    document.querySelectorAll(
+        ".desktop-navigation a, .mobile-navigation a"
+    );
+
+const scrambleCharacters =
+    "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+
+scrambleElements.forEach(element => {
+
+    const originalText =
+        element.textContent.trim();
+
+    if (!originalText) {
+        return;
+    }
+
+    let running = false;
+
+
+    element.addEventListener(
+        "mouseenter",
+        () => {
+
+            if (
+                prefersReducedMotion.matches ||
+                running
+            ) {
+                return;
+            }
+
+            running = true;
+
+            let iteration = 0;
+
+
+            const interval =
+                setInterval(() => {
+
+                    element.textContent =
+                        originalText
+                            .split("")
+                            .map(
+                                (character, index) => {
+
+                                    if (
+                                        character === " "
+                                    ) {
+                                        return " ";
+                                    }
+
+                                    if (
+                                        index <
+                                        iteration
+                                    ) {
+                                        return originalText[
+                                            index
+                                        ];
+                                    }
+
+                                    return scrambleCharacters[
+                                        Math.floor(
+                                            Math.random() *
+                                            scrambleCharacters.length
+                                        )
+                                    ];
+
+                                }
+                            )
+                            .join("");
+
+
+                    iteration += 0.7;
+
+
+                    if (
+                        iteration >=
+                        originalText.length
+                    ) {
+
+                        clearInterval(interval);
+
+                        element.textContent =
+                            originalText;
+
+                        running = false;
+
+                    }
+
+                }, 25);
+
+        }
+    );
+
+});
+    /* =====================================================
+       RANDOM STICKER CLICK
+    ===================================================== */
+
+    stickers.forEach(sticker => {
+
+        sticker.addEventListener(
+            "click",
+            () => {
+
+                if (
+                    prefersReducedMotion.matches
+                ) {
+                    return;
+                }
+
+
+                const randomRotation =
+                    Math.random() * 30 - 15;
+
+
+                const randomScale =
+                    1 +
+                    Math.random() * 0.12;
+
+
+                sticker.style.transform =
+                    `rotate(
+                        ${randomRotation}deg
+                    )
+                    scale(
+                        ${randomScale}
+                    )`;
+
+
+                setTimeout(
+                    () => {
+
+                        sticker.style.transform =
+                            "";
+
+                    },
+                    450
+                );
+
+            }
+        );
+
+    });
+
+
+    /* =====================================================
+       SOCIAL CARD CHAOS
+    ===================================================== */
+
+    if (
+        isDesktop &&
+        !prefersReducedMotion.matches
+    ) {
+
+        document
+            .querySelectorAll(".social-card")
+            .forEach(card => {
+
+                card.addEventListener(
+                    "mouseenter",
+                    () => {
+
+                        const rotation =
+                            Math.random() * 4 - 2;
+
+
+                        card.style.transform =
+                            `rotate(
+                                ${rotation}deg
+                            )
+                            translateY(-10px)
+                            scale(1.025)`;
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.transform =
+                            "";
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* =====================================================
+       SERVICE CARD FOLLOW EFFECT
+    ===================================================== */
+
+    if (
+        isDesktop &&
+        !prefersReducedMotion.matches
+    ) {
+
+        document
+            .querySelectorAll(".service-item")
+            .forEach(card => {
+
+                card.addEventListener(
+                    "mousemove",
+                    event => {
+
+                        const rect =
+                            card.getBoundingClientRect();
+
+
+                        const x =
+                            (
+                                event.clientX -
+                                rect.left
+                            ) /
+                            rect.width -
+                            0.5;
+
+
+                        const y =
+                            (
+                                event.clientY -
+                                rect.top
+                            ) /
+                            rect.height -
+                            0.5;
+
+
+                        card.style.setProperty(
+                            "--card-x",
+                            `${x * 6}px`
+                        );
+
+                        card.style.setProperty(
+                            "--card-y",
+                            `${y * 6}px`
+                        );
+
+                    }
+                );
+
+
+                card.addEventListener(
+                    "mouseleave",
+                    () => {
+
+                        card.style.setProperty(
+                            "--card-x",
+                            "0px"
+                        );
+
+                        card.style.setProperty(
+                            "--card-y",
+                            "0px"
+                        );
+
+                    }
+                );
+
+            });
+
+    }
+
+
+    /* =====================================================
+       ANIMATED COUNTERS
+    ===================================================== */
+
+    const counters =
+        document.querySelectorAll(
+            ".counter"
+        );
+
+
+    if (counters.length) {
+
+        const counterObserver =
+            new IntersectionObserver(
+                entries => {
+
+                    entries.forEach(entry => {
+
+                        if (
+                            !entry.isIntersecting
+                        ) {
+                            return;
+                        }
+
+
+                        const element =
+                            entry.target;
+
+
+                        const target =
+                            Number(
+                                element.dataset.target
+                            );
+
+
+                        if (
+                            Number.isNaN(target)
+                        ) {
+                            return;
+                        }
+
+
+                        const duration =
+                            1600;
+
+
+                        const start =
+                            performance.now();
+
+
+                        const animateCounter =
+                            currentTime => {
+
+                                const progress =
+                                    Math.min(
+                                        (
+                                            currentTime -
+                                            start
+                                        ) /
+                                        duration,
+                                        1
+                                    );
+
+
+                                const eased =
+                                    1 -
+                                    Math.pow(
+                                        1 - progress,
+                                        4
+                                    );
+
+
+                                element.textContent =
+                                    Math.floor(
+                                        target *
+                                        eased
+                                    );
+
+
+                                if (
+                                    progress < 1
+                                ) {
+
+                                    requestAnimationFrame(
+                                        animateCounter
+                                    );
+
+                                } else {
+
+                                    element.textContent =
+                                        target;
+
+                                }
+
+                            };
+
+
+                        requestAnimationFrame(
+                            animateCounter
+                        );
+
+
+                        counterObserver.unobserve(
+                            element
+                        );
+
+                    });
+
+                },
+                {
+                    threshold: 0.6
+                }
+            );
+
+
+        counters.forEach(counter => {
+
+            counterObserver.observe(
+                counter
+            );
+
+        });
+
+    }
+
+
+    /* =====================================================
+       LOGO EASTER EGG
+    ===================================================== */
+
+    const logo =
+        document.querySelector(
+            ".brand"
+        );
+
+
+    if (
+        logo &&
+        !prefersReducedMotion.matches
+    ) {
+
+        let clickCount = 0;
+
+
+        logo.addEventListener(
+            "click",
+            event => {
+
+                clickCount++;
+
+
+                if (
+                    clickCount < 5
+                ) {
+                    return;
+                }
+
+
+                event.preventDefault();
+
+
+                document.body.classList.add(
+                    "crescita-chaos-mode"
+                );
+
+
+                setTimeout(
+                    () => {
+
+                        document.body.classList.remove(
+                            "crescita-chaos-mode"
+                        );
+
+                        clickCount = 0;
+
+                    },
+                    1800
+                );
+
+            }
+        );
+
+    }
+
+
+    /* =====================================================
+       CURRENT YEAR
+    ===================================================== */
+
+    const yearElement =
+        document.querySelector(
+            "#current-year"
+        );
+
+
+    if (yearElement) {
+
+        yearElement.textContent =
+            new Date().getFullYear();
+
+    }
+
+
+    /* =====================================================
+       REDUCED MOTION
+    ===================================================== */
+
+    if (
+        prefersReducedMotion.matches
+    ) {
+
+        document.documentElement.style
+            .setProperty(
+                "scroll-behavior",
+                "auto"
+            );
+
+    }
+
+});
+/* =========================================================
+   PROJECT CURSOR INTERACTION
+========================================================= */
+
+const projectCards = document.querySelectorAll(".project-card");
+
+if (
+    projectCards.length &&
+    window.matchMedia("(min-width: 901px)").matches
+) {
+
+    /* -----------------------------------------
+       CUSTOM CURSOR
+    ----------------------------------------- */
+
+    const cursor = document.createElement("div");
+
+    cursor.className = "project-cursor";
+
+    cursor.innerHTML = `
+        <span>VIEW<br>↗</span>
+    `;
+
+    document.body.appendChild(cursor);
+
+
+    let cursorX = 0;
+    let cursorY = 0;
+
+    let currentX = 0;
+    let currentY = 0;
+
+
+    document.addEventListener("mousemove", event => {
+
+        cursorX = event.clientX;
+        cursorY = event.clientY;
+
+    });
+
+
+    function animateCursor() {
+
+        currentX +=
+            (cursorX - currentX) * 0.15;
+
+        currentY +=
+            (cursorY - currentY) * 0.15;
+
+        cursor.style.transform =
+            `translate3d(
+                ${currentX}px,
+                ${currentY}px,
+                0
+            ) translate(-50%, -50%)`;
+
+        requestAnimationFrame(
+            animateCursor
+        );
+
+    }
+
+    animateCursor();
+
+
+    /* -----------------------------------------
+       PROJECT INTERACTION
+    ----------------------------------------- */
+
+    projectCards.forEach(card => {
+
+        const image =
+            card.querySelector(".project-image");
+
+
+        card.addEventListener(
+            "mouseenter",
+            () => {
+
+                cursor.classList.add(
+                    "project-cursor-active"
+                );
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mouseleave",
+            () => {
+
+                cursor.classList.remove(
+                    "project-cursor-active"
+                );
+
+                image.style.transform =
+                    "";
+
+            }
+        );
+
+
+        card.addEventListener(
+            "mousemove",
+            event => {
+
+                const rect =
+                    card.getBoundingClientRect();
+
+
+                const x =
+                    event.clientX -
+                    rect.left;
+
+
+                const y =
+                    event.clientY -
+                    rect.top;
+
+
+                const centerX =
+                    rect.width / 2;
+
+
+                const centerY =
+                    rect.height / 2;
+
+
+                const moveX =
+                    (x - centerX) /
+                    centerX;
+
+
+                const moveY =
+                    (y - centerY) /
+                    centerY;
+
+
+                image.style.transform =
+                    `
+                    translate(
+                        ${moveX * 3}px,
+                        ${moveY * 3}px
+                    )
+                    scale(1.008)
+                    `;
+
+            }
+        );
+
+    });
+
+
+    /* -----------------------------------------
+       HIDE CURSOR WHEN LEAVING WINDOW
+    ----------------------------------------- */
+
+    document.addEventListener(
+        "mouseleave",
+        () => {
+
+            cursor.classList.remove(
+                "project-cursor-active"
+            );
+
+        }
+    );
+
+}
