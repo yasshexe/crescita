@@ -8,6 +8,7 @@
 <title>Crescita Media — Digital That Works.</title>
 <link rel="stylesheet" href="{% static 'css/agency.css' %}">
 <link rel="stylesheet" href="{% static 'css/mobile-fix.css' %}">
+<link rel="stylesheet" href="{% static 'css/stability-fix.css' %}">
 <style>
 .django-messages{position:fixed;top:24px;right:24px;z-index:9999;max-width:min(460px,calc(100vw - 32px))}.django-message{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:2px solid currentColor;background:var(--paper,#fbf9f3);box-shadow:8px 8px 0 var(--navy,#173653);font-size:13px;line-height:1.5}.django-message strong,.django-message span{display:block}.django-message strong{font-size:16px;margin-bottom:3px}.message-icon{flex:0 0 auto;width:30px;height:30px;display:grid!important;place-items:center;border:2px solid currentColor;font-weight:800;font-size:18px}.django-message.success{color:var(--navy,#173653)}.django-message.error{color:#9a2e22}.submit-button.is-submitting{pointer-events:none;opacity:.65}
 </style>
@@ -24,5 +25,23 @@
 </main>
 <footer class="site-footer"><div class="footer-brand"><img src="{% static 'images/crescita-logo.png' %}" alt="Crescita Media"></div><div class="footer-links"><a href="#services">SERVICES</a><a href="#projects">WORK</a><a href="{% url 'about' %}">ABOUT</a><a href="#social">SOCIAL</a><a href="#contact">CONTACT</a></div><div class="footer-bottom"><span>© 2026 CRESCITA MEDIA</span><span>BUILT WITH INTENT.</span></div></footer>
 <script src="{% static 'js/agency.js' %}"></script>
+<script>
+/* Gate scroll reveals until the visitor actually scrolls. */
+(() => {
+    let activated = false;
+    const activate = () => {
+        if (activated) return;
+        activated = true;
+        document.documentElement.classList.add('has-user-scrolled');
+        window.removeEventListener('scroll', activate);
+        window.removeEventListener('wheel', activate);
+        window.removeEventListener('touchmove', activate);
+        window.removeEventListener('keydown', activate);
+    };
+    window.addEventListener('scroll', activate, { passive: true, once: true });
+    window.addEventListener('wheel', activate, { passive: true, once: true });
+    window.addEventListener('touchmove', activate, { passive: true, once: true });
+})();
+</script>
 </body>
 </html>
