@@ -17,6 +17,7 @@
         .django-message.success { color: var(--navy, #173653); }
         .django-message.error { color: #9a2e22; }
         .submit-button.is-submitting { pointer-events: none; opacity: .65; }
+        .mobile-menu-button::before { content: "☰"; display: inline-block; margin-right: 8px; font-size: 1rem; line-height: 1; vertical-align: -2px; }
         @media (max-width: 600px) { .django-messages { top: 14px; right: 16px; left: 16px; max-width: none; } }
     </style>
 </head>
@@ -50,10 +51,7 @@
             <a href="#contact">CONTACT</a>
         </div>
         <a href="#contact" class="nav-cta">LET'S TALK <span>↗</span></a>
-        <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
-            <span class="hamburger-icon" aria-hidden="true"><i></i><i></i><i></i></span>
-            <span class="hamburger-label">MENU</span>
-        </button>
+        <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false">MENU</button>
     </nav>
     <div class="mobile-navigation">
         <a href="#services">SERVICES</a>
