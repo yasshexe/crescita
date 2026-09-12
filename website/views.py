@@ -3,6 +3,8 @@ import re
 from django.contrib import messages
 from django.shortcuts import redirect, render
 
+from .models import Lead
+
 
 PROJECT_LINK_REPLACEMENTS = [
     (
@@ -33,13 +35,7 @@ def _add_project_links(response):
         else:
             replacement = rf'\1href="{url}" target="_blank" rel="noopener noreferrer"'
 
-        html = re.sub(
-            pattern,
-            replacement,
-            html,
-            count=1,
-            flags=re.DOTALL,
-        )
+        html = re.sub(pattern, replacement, html, count=1, flags=re.DOTALL)
 
     response.content = html.encode(response.charset)
     return response
@@ -50,8 +46,15 @@ def home(request):
         name = request.POST.get("name", "").strip()
         email = request.POST.get("email", "").strip()
         message = request.POST.get("message", "").strip()
+        services = request.POST.getlist("service")
 
         if name and email and message:
+            Lead.objects.create(
+                name=name,
+                email=email,
+                services=services,
+                message=message,
+            )
             messages.success(request, "Thanks — we received your message.")
             return redirect("home")
 
