@@ -60,7 +60,7 @@
                 <div class="project-preview">
                     <div class="preview-brand">BHAUCHA<br>DHAKKA</div>
                     <div class="preview-navigation">MENU <span>OUR STORY</span> <span>ORDER</span></div>
-                    <div class="preview-content"><small>RESTAURANT / DIGITAL MENU</small><h2>AUTHENTIC<br>FLAVOURS. <em>WARM VIBES.</em></h2><p>A digital menu and QR experience built for a local restaurant.</p><button>EXPLORE PROJECT ↗</button></div>
+                    <div class="preview-content"><small>RESTAURANT / DIGITAL MENU</small><h2>AUTHENTIC<br>FLAVOURS. <em>WARM VIBES.</em></h2><p>A digital menu and QR experience built for a local restaurant.</p><a href="https://bhaucha-dhakka.onrender.com/" target="_blank" rel="noopener noreferrer">EXPLORE PROJECT ↗</a></div>
                     <div class="preview-circle">BD</div><div class="preview-stripe">CRESCITA<br>MEDIA</div>
                 </div>
             </div>
@@ -86,7 +86,7 @@
         <div class="project-list">
             <article class="project-card"><div class="project-image"><img src="{% static 'images/projects/bhaucha-dhakka.png' %}" alt="हॉटेल भाऊचा धक्का and Street Coffee website" loading="lazy"></div><div class="project-info"><div class="project-meta">01 / WEBSITE</div><h3>BHAUCHA<br>DHAKKA</h3><p>A digital restaurant, menu and QR experience built for a local food brand.</p><a href="https://bhaucha-dhakka.onrender.com/" target="_blank" rel="noopener noreferrer">VIEW PROJECT <span>↗</span></a></div></article>
             <article class="project-card"><div class="project-image"><img src="{% static 'images/projects/tupe-brothers.png' %}" alt="Tupe Brothers Associates website" loading="lazy"></div><div class="project-info"><div class="project-meta">02 / WEBSITE</div><h3>TUPE<br>BROTHERS<br>ASSOCIATES</h3><p>An editorial-style digital experience for an interior design and architecture studio.</p><a href="https://tupe-brothers-associates.onrender.com/" target="_blank" rel="noopener noreferrer">VIEW PROJECT <span>↗</span></a></div></article>
-            <article class="project-card"><div class="project-image"><img src="{% static 'images/projects/rakhi-surprise.png' %}" alt="Rakhi Surprise website" loading="lazy"></div><div class="project-info"><div class="project-meta">03 / EXPERIENCE</div><h3>RAKHI<br>SURPRISE</h3><p>A personalized digital gifting experience designed around Raksha Bandhan.</p><a href="https://rakhi-surprise-2.onrender.com/">VIEW PROJECT <span>↗</span></a></div></article>
+            <article class="project-card"><div class="project-image"><img src="{% static 'images/projects/rakhi-surprise.png' %}" alt="Rakhi Surprise website" loading="lazy"></div><div class="project-info"><div class="project-meta">03 / EXPERIENCE</div><h3>RAKHI<br>SURPRISE</h3><p>A personalized digital gifting experience designed around Raksha Bandhan.</p><a href="https://rakhi-surprise-2.onrender.com/" target="_blank" rel="noopener noreferrer">VIEW PROJECT <span>↗</span></a></div></article>
         </div>
     </section>
 
@@ -94,14 +94,14 @@
         <div class="social-heading"><div class="section-number">03</div><h2>WE'RE <span>ONLINE</span> TOO.</h2><p>Follow the work, experiments and occasional chaos.</p></div>
         <div class="social-grid">
             <a href="https://www.instagram.com/crescita_media/" target="_blank" rel="noopener noreferrer" class="social-card social-instagram"><span>INSTAGRAM</span><strong>@CRESCITAMEDIA</strong><b>↗</b></a>
-            <a href="#" class="social-card social-linkedin"><span>LINKEDIN</span><strong>CRESCITA MEDIA</strong><b>↗</b></a>
+            <a href="https://www.linkedin.com/company/crescita-media/" target="_blank" rel="noopener noreferrer" class="social-card social-linkedin"><span>LINKEDIN</span><strong>CRESCITA MEDIA</strong><b>↗</b></a>
             <a href="https://wa.me/917058628004" target="_blank" rel="noopener noreferrer" class="social-card social-whatsapp"><span>WHATSAPP</span><strong>SAY HELLO</strong><b>↗</b></a>
         </div>
     </section>
 
     <section id="contact" class="contact-section section-reveal">
         <div class="contact-heading"><div class="section-number">04</div><h2>HAVE A<br>PROJECT? <span>LET'S MAKE IT EXIST.</span></h2><p>Tell us what you're building. We'll figure out the rest.</p></div>
-        <form class="contact-form" method="POST">
+        <form class="contact-form" method="POST" action="#contact">
             {% csrf_token %}
             <div class="form-field"><label for="name">YOUR NAME</label><input id="name" name="name" type="text" placeholder="What's your name?" required></div>
             <div class="form-field"><label for="email">EMAIL</label><input id="email" name="email" type="email" placeholder="you@example.com" required></div>
