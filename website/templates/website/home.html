@@ -50,7 +50,10 @@
             <a href="#contact">CONTACT</a>
         </div>
         <a href="#contact" class="nav-cta">LET'S TALK <span>↗</span></a>
-        <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false">MENU</button>
+        <button class="mobile-menu-button" type="button" aria-label="Open navigation" aria-expanded="false">
+            <span class="hamburger-icon" aria-hidden="true"><i></i><i></i><i></i></span>
+            <span class="hamburger-label">MENU</span>
+        </button>
     </nav>
     <div class="mobile-navigation">
         <a href="#services">SERVICES</a>
@@ -140,12 +143,33 @@
     document.addEventListener('DOMContentLoaded', () => {
         const form = document.querySelector('.contact-form');
         const button = form?.querySelector('.submit-button');
-        if (!form || !button) return;
-        form.addEventListener('submit', () => {
-            button.classList.add('is-submitting');
-            button.disabled = true;
-            button.innerHTML = 'SENDING… <span>↗</span>';
-        });
+        if (form && button) {
+            form.addEventListener('submit', () => {
+                button.classList.add('is-submitting');
+                button.disabled = true;
+                button.innerHTML = 'SENDING… <span>↗</span>';
+            });
+        }
+
+        const menuButton = document.querySelector('.mobile-menu-button');
+        const mobileNavigation = document.querySelector('.mobile-navigation');
+        const label = menuButton?.querySelector('.hamburger-label');
+        if (menuButton && mobileNavigation) {
+            menuButton.addEventListener('click', () => {
+                const open = mobileNavigation.classList.toggle('open');
+                document.body.classList.toggle('menu-open', open);
+                menuButton.setAttribute('aria-expanded', String(open));
+                if (label) label.textContent = open ? 'CLOSE' : 'MENU';
+            });
+            mobileNavigation.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileNavigation.classList.remove('open');
+                    document.body.classList.remove('menu-open');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                    if (label) label.textContent = 'MENU';
+                });
+            });
+        }
     });
 </script>
 <script src="{% static 'js/agency.js' %}"></script>
