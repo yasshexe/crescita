@@ -1,0 +1,48 @@
+/* Prevent first-paint jumps while preserving reveal motion after user scrolls. */
+html { scrollbar-gutter: stable; }
+
+/* The initial viewport must never depend on reveal timing. */
+.section-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+}
+
+/* Once the visitor scrolls, restore the existing reveal system. */
+html.has-user-scrolled .section-reveal {
+    opacity: 0;
+    transform: translateY(35px);
+    transition: opacity .7s ease, transform .7s ease;
+}
+
+html.has-user-scrolled .section-reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Reserve a deterministic first-screen height. */
+.hero {
+    min-height: 100svh;
+    min-height: 100dvh;
+}
+
+/* JS parallax must not alter document flow. */
+.hero-visual,
+.sticker,
+.project-image,
+.primary-button,
+.nav-cta,
+.submit-button,
+.social-card,
+.service-item {
+    will-change: transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .section-reveal,
+    html.has-user-scrolled .section-reveal,
+    html.has-user-scrolled .section-reveal.visible {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
