@@ -7,24 +7,9 @@
 <meta name="description" content="Crescita Media builds websites, AI chatbots, WhatsApp automations and digital experiences for ambitious businesses.">
 <title>Crescita Media — Digital That Works.</title>
 <link rel="stylesheet" href="{% static 'css/agency.css' %}">
+<link rel="stylesheet" href="{% static 'css/mobile-fix.css' %}">
 <style>
 .django-messages{position:fixed;top:24px;right:24px;z-index:9999;max-width:min(460px,calc(100vw - 32px))}.django-message{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:2px solid currentColor;background:var(--paper,#fbf9f3);box-shadow:8px 8px 0 var(--navy,#173653);font-size:13px;line-height:1.5}.django-message strong,.django-message span{display:block}.django-message strong{font-size:16px;margin-bottom:3px}.message-icon{flex:0 0 auto;width:30px;height:30px;display:grid!important;place-items:center;border:2px solid currentColor;font-weight:800;font-size:18px}.django-message.success{color:var(--navy,#173653)}.django-message.error{color:#9a2e22}.submit-button.is-submitting{pointer-events:none;opacity:.65}
-@media (max-width:950px){
-.mobile-navigation{visibility:hidden;opacity:0;pointer-events:none;transform:translateX(100%)!important;transition:transform .35s ease,opacity .25s ease,visibility 0s linear .35s!important;z-index:9999!important}
-.mobile-navigation.open{visibility:visible;opacity:1;pointer-events:auto;transform:translateX(0)!important;transition:transform .35s ease,opacity .25s ease!important}
-.mobile-menu-button{position:relative;display:inline-flex!important;align-items:center;justify-content:center;width:48px;height:42px;padding:0!important;border:1px solid var(--black);background:transparent;font-size:0!important;line-height:1;cursor:pointer}
-.mobile-menu-button::before{content:"☰";display:block!important;margin:0!important;font-size:22px!important;line-height:1!important}
-.mobile-menu-button[aria-expanded="true"]::before{content:"×"}
-.mobile-menu-button[aria-expanded="true"]{background:var(--navy);color:var(--white)}
-}
-@media (max-width:650px){
-.django-messages{top:14px;right:16px;left:16px;max-width:none}
-.hero{padding:105px 18px 65px!important;overflow:visible}
-.hero-title{font-size:clamp(3.25rem,16.5vw,5rem)!important;line-height:.86!important;letter-spacing:-.065em!important;max-width:100%!important;word-break:normal!important;overflow-wrap:normal!important}
-.hero-title span{margin-left:6vw}
-.hero-content{position:relative;z-index:2}
-.hero-visual{position:relative;z-index:1}
-}
 </style>
 </head>
 <body>
