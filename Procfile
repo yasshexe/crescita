@@ -1,0 +1,1 @@
+web: python manage.py bootstrap_admin && gunicorn crescita.wsgi:application

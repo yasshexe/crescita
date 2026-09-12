@@ -23,17 +23,18 @@ DEBUG = os.environ.get(
 # HOSTS
 # =========================================================
 
-render_hostname = os.environ.get(
-    "RENDER_EXTERNAL_HOSTNAME"
-)
+render_hostname = os.environ.get("RENDER_EXTERNAL_HOSTNAME")
 
-ALLOWED_HOSTS = [
-    "127.0.0.1",
-    "localhost",
-]
+ALLOWED_HOSTS = ["127.0.0.1", "localhost"]
 
 if render_hostname:
     ALLOWED_HOSTS.append(render_hostname)
+
+extra_allowed_hosts = os.environ.get("ALLOWED_HOSTS", "")
+if extra_allowed_hosts:
+    ALLOWED_HOSTS.extend(
+        host.strip() for host in extra_allowed_hosts.split(",") if host.strip()
+    )
 
 
 # =========================================================
@@ -47,7 +48,7 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
+    "anymail",
     "website",
 ]
 
@@ -58,9 +59,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-
     "whitenoise.middleware.WhiteNoiseMiddleware",
-
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -83,22 +82,13 @@ ROOT_URLCONF = "crescita.urls"
 
 TEMPLATES = [
     {
-        "BACKEND":
-            "django.template.backends.django.DjangoTemplates",
-
-        "DIRS": [
-            BASE_DIR / "templates"
-        ],
-
-        "APP_DIRS":
-            True,
-
+        "BACKEND": "django.template.backends.django.DjangoTemplates",
+        "DIRS": [BASE_DIR / "templates"],
+        "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.request",
-
                 "django.contrib.auth.context_processors.auth",
-
                 "django.contrib.messages.context_processors.messages",
             ],
         },
@@ -111,7 +101,6 @@ TEMPLATES = [
 # =========================================================
 
 WSGI_APPLICATION = "crescita.wsgi.application"
-
 ASGI_APPLICATION = "crescita.asgi.application"
 
 
@@ -121,11 +110,8 @@ ASGI_APPLICATION = "crescita.asgi.application"
 
 DATABASES = {
     "default": {
-        "ENGINE":
-            "django.db.backends.sqlite3",
-
-        "NAME":
-            BASE_DIR / "db.sqlite3",
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
     }
 }
 
@@ -142,12 +128,22 @@ AUTH_PASSWORD_VALIDATORS = []
 # =========================================================
 
 LANGUAGE_CODE = "en-us"
-
 TIME_ZONE = "Asia/Kolkata"
-
 USE_I18N = True
-
 USE_TZ = True
+
+
+# =========================================================
+# EMAIL / RESEND
+# =========================================================
+
+EMAIL_BACKEND = "anymail.backends.resend.EmailBackend"
+DEFAULT_FROM_EMAIL = os.environ.get("DEFAULT_FROM_EMAIL", "onboarding@resend.dev")
+CONTACT_EMAIL = os.environ.get("CONTACT_EMAIL", "crescitaamedia@gmail.com")
+
+ANYMAIL = {
+    "RESEND_API_KEY": os.environ.get("RESEND_API_KEY", ""),
+}
 
 
 # =========================================================
@@ -155,24 +151,15 @@ USE_TZ = True
 # =========================================================
 
 STATIC_URL = "static/"
-
-STATICFILES_DIRS = [
-    BASE_DIR / "website" / "static"
-]
-
+STATICFILES_DIRS = [BASE_DIR / "website" / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
 
-
-# WhiteNoise compression/caching
 STORAGES = {
     "default": {
-        "BACKEND":
-            "django.core.files.storage.FileSystemStorage",
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
     },
-
     "staticfiles": {
-        "BACKEND":
-            "whitenoise.storage.CompressedManifestStaticFilesStorage",
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
     },
 }
 
