@@ -1,6 +1,8 @@
 import re
 
+from django.conf import settings
 from django.contrib import messages
+from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 
 from .models import Lead
@@ -41,6 +43,32 @@ def _add_project_links(response):
     return response
 
 
+def _send_lead_notification(lead):
+    if not settings.ANYMAIL.get("RESEND_API_KEY"):
+        return False
+
+    services = ", ".join(lead.services) if lead.services else "Not specified"
+    body = (
+        "A new lead has been submitted on Crescita Media.\n\n"
+        f"Name: {lead.name}\n"
+        f"Email: {lead.email}\n"
+        f"Services: {services}\n"
+        f"Submitted: {lead.created_at:%d %b %Y, %I:%M %p}\n\n"
+        "Message:\n"
+        f"{lead.message}\n"
+    )
+
+    email = EmailMessage(
+        subject=f"New Crescita Lead — {lead.name}",
+        body=body,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        to=[settings.CONTACT_EMAIL],
+        reply_to=[lead.email],
+    )
+    email.send(fail_silently=True)
+    return True
+
+
 def home(request):
     if request.method == "POST":
         name = request.POST.get("name", "").strip()
@@ -49,12 +77,13 @@ def home(request):
         services = request.POST.getlist("service")
 
         if name and email and message:
-            Lead.objects.create(
+            lead = Lead.objects.create(
                 name=name,
                 email=email,
                 services=services,
                 message=message,
             )
+            _send_lead_notification(lead)
             messages.success(request, "Thanks — we received your message.")
             return redirect("home")
 
