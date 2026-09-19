@@ -46,7 +46,6 @@ body {
 .hero-visual,
 .hero-browser,
 .sticker,
-.project-image,
 .primary-button,
 .nav-cta,
 .submit-button,
@@ -55,28 +54,6 @@ body {
     will-change: transform;
 }
 
-.section-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
-
-html.has-user-scrolled .section-reveal {
-    opacity: 0 !important;
-    transform: translateY(35px) !important;
-    transition: opacity .7s ease, transform .7s ease !important;
-}
-
-html.has-user-scrolled .section-reveal.visible {
-    opacity: 1 !important;
-    transform: translateY(0) !important;
-}
-
-html.has-user-scrolled .hero.section-reveal {
-    opacity: 1 !important;
-    transform: none !important;
-    transition: none !important;
-}
 
 /* =========================================================
    EDITORIAL WORK GRID
@@ -197,11 +174,12 @@ html.has-user-scrolled .hero.section-reveal {
     height: 100%;
     object-fit: cover;
     object-position: center;
-    transition: transform .45s cubic-bezier(.2,.7,.2,1);
+    transition: none;
+    transform: none !important;
 }
 
 .project-card:hover .project-image img {
-    transform: scale(1.025) !important;
+    transform: none !important;
 }
 
 .project-info {
