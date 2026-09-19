@@ -24,22 +24,5 @@
 </main>
 <footer class="site-footer"><div class="footer-brand"><img src="{% static 'images/crescita-logo.png' %}" alt="Crescita Media"></div><div class="footer-links"><a href="#services">SERVICES</a><a href="#projects">WORK</a><a href="{% url 'about' %}">ABOUT</a><a href="#social">SOCIAL</a><a href="#contact">CONTACT</a></div><div class="footer-bottom"><span>© 2026 CRESCITA MEDIA</span><span>BUILT WITH INTENT.</span></div></footer>
 <script src="{% static 'js/agency.js' %}"></script>
-<script>
-(() => {
-    let activated = false;
-    const activate = () => {
-        if (activated) return;
-        activated = true;
-        document.documentElement.classList.add('has-user-scrolled');
-        window.removeEventListener('scroll', activate);
-        window.removeEventListener('wheel', activate);
-        window.removeEventListener('touchmove', activate);
-        window.removeEventListener('keydown', activate);
-    };
-    window.addEventListener('scroll', activate, { passive: true, once: true });
-    window.addEventListener('wheel', activate, { passive: true, once: true });
-    window.addEventListener('touchmove', activate, { passive: true, once: true });
-})();
-</script>
 </body>
 </html>
