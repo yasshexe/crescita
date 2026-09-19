@@ -3496,3 +3496,6 @@ body {
     }
 
 }
+
+/* Django feedback and form state */
+.django-messages{position:fixed;top:24px;right:24px;z-index:9999;max-width:min(460px,calc(100vw - 32px))}.django-message{display:flex;align-items:flex-start;gap:14px;padding:18px 20px;border:2px solid currentColor;background:var(--paper,#fbf9f3);box-shadow:8px 8px 0 var(--navy,#173653);font-size:13px;line-height:1.5}.django-message strong,.django-message span{display:block}.django-message strong{font-size:16px;margin-bottom:3px}.message-icon{flex:0 0 auto;width:30px;height:30px;display:grid!important;place-items:center;border:2px solid currentColor;font-weight:800;font-size:18px}.django-message.success{color:var(--navy,#173653)}.django-message.error{color:#9a2e22}.submit-button.is-submitting{pointer-events:none;opacity:.65}
