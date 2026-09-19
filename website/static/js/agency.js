@@ -26,9 +26,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let scrollVelocity = 0;
     let smoothVelocity = 0;
 
-    let ticking = false;
-
-
     /* =====================================================
        MOBILE NAVIGATION
     ===================================================== */
@@ -568,109 +565,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
     /* =====================================================
-       PROJECT TILT
-    ===================================================== */
-
-    if (
-        isDesktop &&
-        !prefersReducedMotion.matches
-    ) {
-
-        document
-            .querySelectorAll(".project-image")
-            .forEach(project => {
-
-                const inner =
-                    project.querySelector(
-                        ".mockup-window, .phone-mockup, .ai-card"
-                    );
-
-
-                if (!inner) return;
-
-
-                project.addEventListener(
-                    "mousemove",
-                    event => {
-
-                        const rect =
-                            project.getBoundingClientRect();
-
-
-                        const x =
-                            (
-                                event.clientX -
-                                rect.left
-                            ) /
-                            rect.width -
-                            0.5;
-
-
-                        const y =
-                            (
-                                event.clientY -
-                                rect.top
-                            ) /
-                            rect.height -
-                            0.5;
-
-
-                        const rotateX =
-                            y * -5;
-
-
-                        const rotateY =
-                            x * 5;
-
-
-                        inner.style.transform =
-                            `perspective(1000px)
-                             rotateX(${rotateX}deg)
-                             rotateY(${rotateY}deg)
-                             scale(1.025)`;
-
-                    }
-                );
-
-
-                project.addEventListener(
-                    "mouseleave",
-                    () => {
-
-                        inner.style.transform =
-                            "";
-
-                    }
-                );
-
-            });
-
-    }
-
-
-    /* =====================================================
-       PROJECT IMAGE PARALLAX
-    ===================================================== */
-
-    if (
-        !prefersReducedMotion.matches
-    ) {
-
-        document
-            .querySelectorAll(".project-image")
-            .forEach(project => {
-
-                project.dataset.parallax =
-                    String(
-                        Math.random() * 20 + 10
-                    );
-
-            });
-
-    }
-
-
-    /* =====================================================
    AUTOMATIC NAV TEXT SCRAMBLE
 ===================================================== */
 
@@ -944,132 +838,6 @@ scrambleElements.forEach(element => {
 
 
     /* =====================================================
-       ANIMATED COUNTERS
-    ===================================================== */
-
-    const counters =
-        document.querySelectorAll(
-            ".counter"
-        );
-
-
-    if (counters.length) {
-
-        const counterObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(entry => {
-
-                        if (
-                            !entry.isIntersecting
-                        ) {
-                            return;
-                        }
-
-
-                        const element =
-                            entry.target;
-
-
-                        const target =
-                            Number(
-                                element.dataset.target
-                            );
-
-
-                        if (
-                            Number.isNaN(target)
-                        ) {
-                            return;
-                        }
-
-
-                        const duration =
-                            1600;
-
-
-                        const start =
-                            performance.now();
-
-
-                        const animateCounter =
-                            currentTime => {
-
-                                const progress =
-                                    Math.min(
-                                        (
-                                            currentTime -
-                                            start
-                                        ) /
-                                        duration,
-                                        1
-                                    );
-
-
-                                const eased =
-                                    1 -
-                                    Math.pow(
-                                        1 - progress,
-                                        4
-                                    );
-
-
-                                element.textContent =
-                                    Math.floor(
-                                        target *
-                                        eased
-                                    );
-
-
-                                if (
-                                    progress < 1
-                                ) {
-
-                                    requestAnimationFrame(
-                                        animateCounter
-                                    );
-
-                                } else {
-
-                                    element.textContent =
-                                        target;
-
-                                }
-
-                            };
-
-
-                        requestAnimationFrame(
-                            animateCounter
-                        );
-
-
-                        counterObserver.unobserve(
-                            element
-                        );
-
-                    });
-
-                },
-                {
-                    threshold: 0.6
-                }
-            );
-
-
-        counters.forEach(counter => {
-
-            counterObserver.observe(
-                counter
-            );
-
-        });
-
-    }
-
-
-    /* =====================================================
        LOGO EASTER EGG
     ===================================================== */
 
@@ -1124,24 +892,6 @@ scrambleElements.forEach(element => {
 
             }
         );
-
-    }
-
-
-    /* =====================================================
-       CURRENT YEAR
-    ===================================================== */
-
-    const yearElement =
-        document.querySelector(
-            "#current-year"
-        );
-
-
-    if (yearElement) {
-
-        yearElement.textContent =
-            new Date().getFullYear();
 
     }
 
