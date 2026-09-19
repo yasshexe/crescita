@@ -19,7 +19,7 @@ def home(request):
             lead = Lead.objects.create(
                 name=form.cleaned_data["name"],
                 email=form.cleaned_data["email"],
-                services=form.cleaned_data["services"],
+                services=form.cleaned_data["service"],
                 message=form.cleaned_data["message"],
             )
             send_lead_notification(lead)
