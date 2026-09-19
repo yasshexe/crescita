@@ -11,7 +11,7 @@ class LeadForm(forms.Form):
 
     name = forms.CharField(max_length=120)
     email = forms.EmailField()
-    services = forms.MultipleChoiceField(
+    service = forms.MultipleChoiceField(
         choices=SERVICE_CHOICES,
         required=False,
     )
