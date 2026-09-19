@@ -3,7 +3,6 @@
    AGENCY DESIGN SYSTEM
 ========================================================= */
 
-
 /* =========================================================
    VARIABLES
 ========================================================= */
@@ -29,7 +28,6 @@
     --max-width: 1440px;
 
 }
-
 
 /* =========================================================
    RESET
@@ -78,7 +76,6 @@ textarea {
     font: inherit;
 }
 
-
 /* =========================================================
    HEADER
 ========================================================= */
@@ -104,7 +101,6 @@ textarea {
         1px solid rgba(21, 21, 21, .08);
 }
 
-
 .site-nav {
 
     height: 82px;
@@ -123,7 +119,6 @@ textarea {
 
     justify-content: space-between;
 }
-
 
 /* =========================================================
    LOGO
@@ -150,7 +145,6 @@ textarea {
 
     display: block;
 }
-
 
 /* =========================================================
    DESKTOP NAVIGATION
@@ -200,7 +194,6 @@ textarea {
     width: 100%;
 }
 
-
 /* =========================================================
    NAV CTA
 ========================================================= */
@@ -244,7 +237,6 @@ textarea {
         var(--olive-light);
 }
 
-
 /* =========================================================
    MOBILE MENU BUTTON
 ========================================================= */
@@ -269,7 +261,6 @@ textarea {
     cursor: pointer;
 }
 
-
 /* =========================================================
    MOBILE NAVIGATION
 ========================================================= */
@@ -278,7 +269,6 @@ textarea {
 
     display: none;
 }
-
 
 /* =========================================================
    HERO
@@ -304,7 +294,6 @@ textarea {
 
     overflow: hidden;
 }
-
 
 /* =========================================================
    HERO LABEL
@@ -332,7 +321,6 @@ textarea {
     color: var(--olive);
 }
 
-
 /* =========================================================
    HERO CONTENT
 ========================================================= */
@@ -345,7 +333,6 @@ textarea {
 
     z-index: 10;
 }
-
 
 .eyebrow {
 
@@ -361,7 +348,6 @@ textarea {
 
     letter-spacing: 1px;
 }
-
 
 /* =========================================================
    HERO TITLE
@@ -400,7 +386,6 @@ textarea {
         var(--olive);
 }
 
-
 /* =========================================================
    HERO DESCRIPTION
 ========================================================= */
@@ -422,7 +407,6 @@ textarea {
         var(--muted);
 }
 
-
 /* =========================================================
    HERO ACTIONS
 ========================================================= */
@@ -435,7 +419,6 @@ textarea {
 
     gap: 25px;
 }
-
 
 .primary-button {
 
@@ -477,7 +460,6 @@ textarea {
         translate(3px, -3px);
 }
 
-
 .secondary-button {
 
     display: inline-flex;
@@ -499,7 +481,6 @@ textarea {
         900;
 }
 
-
 /* =========================================================
    HERO VISUAL
 ========================================================= */
@@ -520,7 +501,6 @@ textarea {
 
     z-index: 4;
 }
-
 
 /* =========================================================
    BROWSER MOCKUP
@@ -546,7 +526,6 @@ textarea {
         rotate(1.8deg);
 }
 
-
 .browser-top {
 
     height: 38px;
@@ -567,7 +546,6 @@ textarea {
         1px solid var(--black);
 }
 
-
 .browser-dots {
 
     display: flex;
@@ -586,7 +564,6 @@ textarea {
     background:
         var(--black);
 }
-
 
 .browser-address {
 
@@ -610,7 +587,6 @@ textarea {
         .5px;
 }
 
-
 /* =========================================================
    PROJECT PREVIEW
 ========================================================= */
@@ -627,7 +603,6 @@ textarea {
     background:
         var(--paper);
 }
-
 
 .preview-brand {
 
@@ -646,7 +621,6 @@ textarea {
     line-height:
         .85;
 }
-
 
 .preview-navigation {
 
@@ -667,12 +641,10 @@ textarea {
         900;
 }
 
-
 .preview-navigation span {
     color:
         var(--muted);
 }
-
 
 .preview-content {
 
@@ -684,7 +656,6 @@ textarea {
 
     z-index: 3;
 }
-
 
 .preview-content small {
 
@@ -700,7 +671,6 @@ textarea {
     color:
         var(--olive);
 }
-
 
 .preview-content h2 {
 
@@ -727,7 +697,6 @@ textarea {
         950;
 }
 
-
 .preview-content h2 em {
 
     font-style:
@@ -736,7 +705,6 @@ textarea {
     color:
         var(--olive);
 }
-
 
 .preview-content p {
 
@@ -752,7 +720,6 @@ textarea {
     color:
         var(--muted);
 }
-
 
 .preview-content button {
 
@@ -774,7 +741,6 @@ textarea {
     font-weight:
         900;
 }
-
 
 .preview-circle {
 
@@ -820,7 +786,6 @@ textarea {
         rotate(-8deg);
 }
 
-
 .preview-stripe {
 
     position: absolute;
@@ -849,7 +814,6 @@ textarea {
     transform:
         rotate(-5deg);
 }
-
 
 /* =========================================================
    STICKERS
@@ -893,7 +857,6 @@ textarea {
         scale(1.04);
 }
 
-
 .sticker-olive {
 
     left:
@@ -917,7 +880,6 @@ textarea {
     font-size:
         .9rem;
 }
-
 
 .sticker-navy {
 
@@ -949,7 +911,6 @@ textarea {
         .7rem;
 }
 
-
 /* =========================================================
    DOODLES
 ========================================================= */
@@ -975,7 +936,6 @@ textarea {
         var(--black);
 }
 
-
 .hero-star {
 
     position:
@@ -996,7 +956,6 @@ textarea {
     transform:
         rotate(15deg);
 }
-
 
 /* =========================================================
    SCROLL INDICATOR
@@ -1032,7 +991,6 @@ textarea {
         1px;
 }
 
-
 /* =========================================================
    SECTION COMMON
 ========================================================= */
@@ -1057,26 +1015,6 @@ textarea {
         translateY(0);
 }
 
-
-.section-number {
-
-    margin-bottom:
-        18px;
-
-    color:
-        var(--olive);
-
-    font-size:
-        .65rem;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        1px;
-}
-
-
 /* =========================================================
    SERVICES
 ========================================================= */
@@ -1096,7 +1034,6 @@ textarea {
         1px solid var(--line);
 }
 
-
 .section-intro {
 
     display:
@@ -1111,7 +1048,6 @@ textarea {
     margin-bottom:
         75px;
 }
-
 
 .section-intro h2 {
 
@@ -1138,13 +1074,11 @@ textarea {
         uppercase;
 }
 
-
 .section-intro h2 span {
 
     color:
         var(--olive);
 }
-
 
 .section-intro p {
 
@@ -1167,7 +1101,6 @@ textarea {
         1.5;
 }
 
-
 .services-grid {
 
     display:
@@ -1182,7 +1115,6 @@ textarea {
     border-bottom:
         1px solid var(--line);
 }
-
 
 .service-item {
 
@@ -1208,7 +1140,6 @@ textarea {
         none;
 }
 
-
 .service-item:hover {
 
     background:
@@ -1217,20 +1148,6 @@ textarea {
     transform:
         translateY(-5px);
 }
-
-
-.service-number {
-
-    font-size:
-        .6rem;
-
-    font-weight:
-        900;
-
-    color:
-        var(--muted);
-}
-
 
 .service-icon {
 
@@ -1246,7 +1163,6 @@ textarea {
     font-weight:
         900;
 }
-
 
 .service-item h3 {
 
@@ -1269,7 +1185,6 @@ textarea {
         950;
 }
 
-
 .service-item p {
 
     max-width:
@@ -1287,7 +1202,6 @@ textarea {
     line-height:
         1.5;
 }
-
 
 .service-tags {
 
@@ -1318,7 +1232,6 @@ textarea {
         var(--olive);
 }
 
-
 /* =========================================================
    PROJECTS
 ========================================================= */
@@ -1338,7 +1251,6 @@ textarea {
         1px solid var(--line);
 }
 
-
 .projects-heading {
 
     display:
@@ -1353,7 +1265,6 @@ textarea {
     margin-bottom:
         80px;
 }
-
 
 .projects-heading h2 {
 
@@ -1380,12 +1291,10 @@ textarea {
         uppercase;
 }
 
-
 .projects-heading h2 span {
     color:
         var(--olive);
 }
-
 
 .projects-heading p {
 
@@ -1405,7 +1314,6 @@ textarea {
         1.5;
 }
 
-
 /* =========================================================
    PROJECT CARDS
 ========================================================= */
@@ -1415,7 +1323,6 @@ textarea {
     margin-bottom:
         130px;
 }
-
 
 .project-image {
 
@@ -1432,372 +1339,11 @@ textarea {
         1px solid var(--black);
 }
 
-
 /* RESTAURANT */
-
-.project-restaurant {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    background:
-        var(--navy);
-}
-
-
-.mockup-window {
-
-    width:
-        72%;
-
-    min-height:
-        390px;
-
-    background:
-        var(--cream);
-
-    border:
-        2px solid var(--black);
-
-    box-shadow:
-        15px 15px 0
-        rgba(0,0,0,.25);
-
-    transform:
-        rotate(-2deg);
-
-    padding:
-        30px;
-}
-
-
-.mockup-header {
-
-    font-size:
-        .55rem;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        1px;
-}
-
-
-.mockup-title {
-
-    margin:
-        70px 0 50px;
-
-    font-size:
-        clamp(
-            3rem,
-            6vw,
-            6rem
-        );
-
-    line-height:
-        .8;
-
-    font-weight:
-        950;
-
-    letter-spacing:
-        -.06em;
-}
-
-
-.mockup-title span {
-    color:
-        var(--olive);
-}
-
-
-.mockup-menu {
-
-    display:
-        grid;
-
-    gap:
-        10px;
-
-    font-size:
-        .6rem;
-
-    font-weight:
-        800;
-}
-
-
-.mockup-menu div {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    padding-bottom:
-        8px;
-
-    border-bottom:
-        1px solid var(--line);
-}
-
-
-.project-sticker {
-
-    position:
-        absolute;
-
-    right:
-        12%;
-
-    top:
-        10%;
-
-    padding:
-        15px;
-
-    background:
-        var(--olive);
-
-    font-size:
-        .7rem;
-
-    font-weight:
-        950;
-
-    transform:
-        rotate(8deg);
-}
-
 
 /* WHATSAPP */
 
-.project-offset {
-
-    width:
-        75%;
-
-    margin-left:
-        25%;
-}
-
-
-.project-whatsapp {
-
-    background:
-        #e8e5dd;
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-}
-
-
-.phone-mockup {
-
-    width:
-        240px;
-
-    min-height:
-        440px;
-
-    padding:
-        18px;
-
-    border:
-        8px solid var(--black);
-
-    border-radius:
-        28px;
-
-    background:
-        #f0eee8;
-
-    box-shadow:
-        15px 15px 0
-        var(--olive);
-
-    transform:
-        rotate(4deg);
-}
-
-
-.phone-header {
-
-    margin-bottom:
-        30px;
-
-    padding-bottom:
-        12px;
-
-    border-bottom:
-        1px solid var(--line);
-
-    font-size:
-        .7rem;
-
-    font-weight:
-        900;
-}
-
-
-.chat-bubble {
-
-    max-width:
-        80%;
-
-    padding:
-        10px;
-
-    margin-bottom:
-        12px;
-
-    font-size:
-        .55rem;
-
-    line-height:
-        1.4;
-}
-
-
-.incoming {
-
-    background:
-        var(--white);
-
-    border:
-        1px solid var(--line);
-}
-
-
-.outgoing {
-
-    margin-left:
-        auto;
-
-    background:
-        var(--olive);
-}
-
-
 /* AI */
-
-.project-third {
-
-    width:
-        75%;
-
-    margin-left:
-        8%;
-}
-
-
-.project-ai {
-
-    display:
-        flex;
-
-    align-items:
-        center;
-
-    justify-content:
-        center;
-
-    background:
-        var(--black);
-}
-
-
-.ai-card {
-
-    width:
-        65%;
-
-    padding:
-        45px;
-
-    color:
-        white;
-
-    border:
-        1px solid rgba(255,255,255,.3);
-
-    transform:
-        rotate(-2deg);
-}
-
-
-.ai-card span {
-
-    color:
-        var(--olive);
-
-    font-size:
-        .6rem;
-
-    font-weight:
-        900;
-}
-
-
-.ai-card strong {
-
-    display:
-        block;
-
-    margin:
-        35px 0;
-
-    font-size:
-        clamp(
-            3rem,
-            6vw,
-            6rem
-        );
-
-    line-height:
-        .8;
-
-    letter-spacing:
-        -.06em;
-}
-
-
-.ai-input {
-
-    display:
-        flex;
-
-    justify-content:
-        space-between;
-
-    padding:
-        12px;
-
-    border:
-        1px solid rgba(255,255,255,.4);
-
-    color:
-        rgba(255,255,255,.55);
-
-    font-size:
-        .55rem;
-}
-
 
 /* =========================================================
    PROJECT INFO
@@ -1824,7 +1370,6 @@ textarea {
         1px solid var(--line);
 }
 
-
 .project-meta {
 
     font-size:
@@ -1836,7 +1381,6 @@ textarea {
     color:
         var(--olive);
 }
-
 
 .project-info h3 {
 
@@ -1856,7 +1400,6 @@ textarea {
         950;
 }
 
-
 .project-info p {
 
     max-width:
@@ -1874,7 +1417,6 @@ textarea {
     line-height:
         1.5;
 }
-
 
 .project-info a {
 
@@ -1894,7 +1436,6 @@ textarea {
         5px;
 }
 
-
 /* =========================================================
    SOCIAL
 ========================================================= */
@@ -1913,7 +1454,6 @@ textarea {
     border-top:
         1px solid var(--line);
 }
-
 
 .social-heading h2 {
 
@@ -1937,12 +1477,10 @@ textarea {
         950;
 }
 
-
 .social-heading h2 span {
     color:
         var(--olive);
 }
-
 
 .social-heading p {
 
@@ -1962,7 +1500,6 @@ textarea {
         1.5;
 }
 
-
 .social-grid {
 
     display:
@@ -1974,7 +1511,6 @@ textarea {
     gap:
         15px;
 }
-
 
 .social-card {
 
@@ -2003,14 +1539,12 @@ textarea {
         transform .25s ease;
 }
 
-
 .social-card:hover {
 
     transform:
         rotate(-1deg)
         translateY(-5px);
 }
-
 
 .social-card span {
 
@@ -2020,7 +1554,6 @@ textarea {
     font-weight:
         900;
 }
-
 
 .social-card strong {
 
@@ -2041,7 +1574,6 @@ textarea {
         950;
 }
 
-
 .social-card b {
 
     position:
@@ -2057,12 +1589,10 @@ textarea {
         1.3rem;
 }
 
-
 .social-instagram {
     background:
         var(--olive);
 }
-
 
 .social-linkedin {
     background:
@@ -2072,12 +1602,10 @@ textarea {
         white;
 }
 
-
 .social-whatsapp {
     background:
         var(--paper);
 }
-
 
 /* =========================================================
    CONTACT
@@ -2107,7 +1635,6 @@ textarea {
         1px solid var(--line);
 }
 
-
 .contact-heading h2 {
 
     margin:
@@ -2133,7 +1660,6 @@ textarea {
         uppercase;
 }
 
-
 .contact-heading h2 span {
 
     display:
@@ -2145,7 +1671,6 @@ textarea {
     color:
         var(--olive);
 }
-
 
 .contact-heading p {
 
@@ -2165,7 +1690,6 @@ textarea {
         1.5;
 }
 
-
 /* =========================================================
    FORM
 ========================================================= */
@@ -2182,7 +1706,6 @@ textarea {
         35px;
 }
 
-
 .form-field {
 
     display:
@@ -2195,7 +1718,6 @@ textarea {
         10px;
 }
 
-
 .form-field > label {
 
     font-size:
@@ -2207,7 +1729,6 @@ textarea {
     letter-spacing:
         1px;
 }
-
 
 .form-field input,
 .form-field textarea {
@@ -2240,7 +1761,6 @@ textarea {
         vertical;
 }
 
-
 .form-field input:focus,
 .form-field textarea:focus {
 
@@ -2248,14 +1768,12 @@ textarea {
         2px solid var(--olive);
 }
 
-
 .form-field input::placeholder,
 .form-field textarea::placeholder {
 
     color:
         #99968c;
 }
-
 
 /* SERVICE OPTIONS */
 
@@ -2271,13 +1789,11 @@ textarea {
         8px;
 }
 
-
 .service-options label {
 
     cursor:
         pointer;
 }
-
 
 .service-options input {
 
@@ -2290,7 +1806,6 @@ textarea {
     pointer-events:
         none;
 }
-
 
 .service-options span {
 
@@ -2314,7 +1829,6 @@ textarea {
         color .2s ease;
 }
 
-
 .service-options input:checked + span {
 
     background:
@@ -2323,7 +1837,6 @@ textarea {
     color:
         white;
 }
-
 
 /* SUBMIT */
 
@@ -2363,7 +1876,6 @@ textarea {
         transform .2s ease;
 }
 
-
 .submit-button:hover {
 
     transform:
@@ -2372,7 +1884,6 @@ textarea {
             -3px
         );
 }
-
 
 /* =========================================================
    FOOTER
@@ -2390,7 +1901,6 @@ textarea {
         white;
 }
 
-
 .footer-brand {
 
     width:
@@ -2406,7 +1916,6 @@ textarea {
         var(--white);
 }
 
-
 .footer-brand img {
 
     width:
@@ -2418,7 +1927,6 @@ textarea {
     object-fit:
         contain;
 }
-
 
 .footer-links {
 
@@ -2432,7 +1940,6 @@ textarea {
         70px;
 }
 
-
 .footer-links a {
 
     font-size:
@@ -2441,7 +1948,6 @@ textarea {
     font-weight:
         900;
 }
-
 
 .footer-bottom {
 
@@ -2467,7 +1973,6 @@ textarea {
     letter-spacing:
         .5px;
 }
-
 
 /* =========================================================
    RESPONSIVE
@@ -2523,7 +2028,6 @@ textarea {
         letter-spacing: -.06em;
     }
 
-
     /* ---------- HERO ---------- */
 
     .hero {
@@ -2559,7 +2063,6 @@ textarea {
         margin: 75px auto 0;
     }
 
-
     /* ---------- SERVICES ---------- */
 
     .section-intro {
@@ -2575,18 +2078,7 @@ textarea {
         border-right: none;
     }
 
-
     /* ---------- PROJECTS ---------- */
-
-    .project-offset {
-        width: 90%;
-        margin-left: 10%;
-    }
-
-    .project-third {
-        width: 90%;
-        margin-left: 5%;
-    }
 
     .project-info {
         grid-template-columns: 1fr 1fr;
@@ -2597,13 +2089,11 @@ textarea {
         justify-self: start;
     }
 
-
     /* ---------- SOCIAL ---------- */
 
     .social-grid {
         grid-template-columns: repeat(2, 1fr);
     }
-
 
     /* ---------- CONTACT ---------- */
 
@@ -2613,7 +2103,6 @@ textarea {
     }
 
 }
-
 
 /* =========================================================
    MOBILE
@@ -2636,7 +2125,6 @@ textarea {
     p {
         max-width: 100%;
     }
-
 
     /* =====================================================
        HEADER
@@ -2665,7 +2153,6 @@ textarea {
     .mobile-navigation a {
         font-size: clamp(2.8rem, 13vw, 4.5rem);
     }
-
 
     /* =====================================================
        HERO
@@ -2723,7 +2210,6 @@ textarea {
         line-height: 1.55;
     }
 
-
     /* ---------- HERO BUTTONS ---------- */
 
     .hero-actions {
@@ -2754,7 +2240,6 @@ textarea {
 
         font-size: .6rem;
     }
-
 
     /* =====================================================
        HERO VISUAL
@@ -2799,7 +2284,6 @@ textarea {
         padding: 3px 7px;
         font-size: .4rem;
     }
-
 
     /* ---------- PROJECT PREVIEW ---------- */
 
@@ -2861,7 +2345,6 @@ textarea {
         font-size: .4rem;
     }
 
-
     /* ---------- STICKERS ---------- */
 
     .sticker-olive {
@@ -2890,7 +2373,6 @@ textarea {
         display: none;
     }
 
-
     /* =====================================================
        SECTIONS
     ===================================================== */
@@ -2902,12 +2384,6 @@ textarea {
             90px 18px;
     }
 
-    .section-number {
-        margin-bottom: 14px;
-        font-size: .55rem;
-    }
-
-
     /* ---------- SECTION HEADINGS ---------- */
 
     .section-intro h2,
@@ -2918,7 +2394,6 @@ textarea {
 
         line-height: .84;
     }
-
 
     /* =====================================================
        SERVICES
@@ -2978,7 +2453,6 @@ textarea {
         font-size: .44rem;
     }
 
-
     /* =====================================================
        PROJECTS
     ===================================================== */
@@ -2996,112 +2470,16 @@ textarea {
     }
 
     .project-card,
-    .project-offset,
-    .project-third {
-        width: 100%;
-
-        margin-left: 0;
-        margin-bottom: 80px;
-    }
 
     .project-image {
         min-height: 370px;
     }
 
-
     /* ---------- RESTAURANT PROJECT ---------- */
-
-    .mockup-window {
-        width: 84%;
-
-        min-height: 285px;
-
-        padding: 18px;
-
-        box-shadow:
-            8px 8px 0
-            rgba(0,0,0,.25);
-    }
-
-    .mockup-header {
-        font-size: .45rem;
-    }
-
-    .mockup-title {
-        margin:
-            40px 0 28px;
-
-        font-size:
-            clamp(2.2rem, 11vw, 3.2rem);
-    }
-
-    .mockup-menu {
-        font-size: .46rem;
-    }
-
-    .project-sticker {
-        right: 6%;
-        top: 7%;
-
-        padding: 10px;
-
-        font-size: .55rem;
-    }
-
 
     /* ---------- WHATSAPP PROJECT ---------- */
 
-    .phone-mockup {
-        width: 200px;
-
-        min-height: 350px;
-
-        padding: 14px;
-
-        border-width: 6px;
-        border-radius: 22px;
-
-        box-shadow:
-            9px 9px 0
-            var(--olive);
-    }
-
-    .phone-header {
-        margin-bottom: 20px;
-        padding-bottom: 9px;
-
-        font-size: .6rem;
-    }
-
-    .chat-bubble {
-        padding: 8px;
-
-        margin-bottom: 9px;
-
-        font-size: .47rem;
-    }
-
-
     /* ---------- AI PROJECT ---------- */
-
-    .ai-card {
-        width: 82%;
-
-        padding: 28px;
-    }
-
-    .ai-card strong {
-        margin: 25px 0;
-
-        font-size:
-            clamp(2.4rem, 12vw, 4rem);
-    }
-
-    .ai-input {
-        padding: 9px;
-        font-size: .45rem;
-    }
-
 
     /* ---------- PROJECT INFO ---------- */
 
@@ -3126,7 +2504,6 @@ textarea {
         justify-self: start;
     }
 
-
     /* =====================================================
        SOCIAL
     ===================================================== */
@@ -3145,7 +2522,6 @@ textarea {
         font-size:
             clamp(1.6rem, 8vw, 2.5rem);
     }
-
 
     /* =====================================================
        CONTACT
@@ -3193,7 +2569,6 @@ textarea {
         justify-content: center;
     }
 
-
     /* =====================================================
        FOOTER
     ===================================================== */
@@ -3231,7 +2606,6 @@ textarea {
     }
 
 }
-
 
 /* =========================================================
    VERY SMALL PHONES
@@ -3288,7 +2662,6 @@ textarea {
 
 }
 
-
 /* =========================================================
    LANDSCAPE MOBILE
 ========================================================= */
@@ -3304,7 +2677,6 @@ textarea {
     }
 
 }
-
 
 /* =========================================================
    REDUCED MOTION
@@ -3325,7 +2697,6 @@ textarea {
     }
 
 }
-
 
 /* =========================================================
    CRESCITA — KINETIC / EDITORIAL ANIMATION SYSTEM
@@ -3540,32 +2911,6 @@ textarea {
         transform: scale(1.015);
     }
 
-    .project-card:hover .mockup-window {
-        transform: rotate(-1deg) scale(1.025);
-    }
-
-    .project-card:hover .phone-mockup {
-        transform: rotate(2deg) translateY(-8px);
-    }
-
-    .project-card:hover .ai-card {
-        transform: rotate(0deg) translateY(-8px) scale(1.015);
-    }
-
-    .mockup-window,
-    .phone-mockup,
-    .ai-card {
-        transition: transform .6s cubic-bezier(.16, 1, .3, 1);
-    }
-
-    .project-sticker {
-        transition: transform .45s cubic-bezier(.16, 1, .3, 1);
-    }
-
-    .project-card:hover .project-sticker {
-        transform: rotate(-5deg) scale(1.08) translateY(-8px);
-    }
-
     /* ---------- SOCIAL CARDS ---------- */
 
     .social-card {
@@ -3605,27 +2950,6 @@ textarea {
 
     /* ---------- CHAT BUBBLES ---------- */
 
-    .phone-mockup .chat-bubble {
-        opacity: 0;
-        transform: translateY(12px);
-    }
-
-    .project-card.visible .chat-bubble {
-        animation: chatReveal .5s cubic-bezier(.16, 1, .3, 1) forwards;
-    }
-
-    .project-card.visible .chat-bubble:nth-child(2) {
-        animation-delay: .2s;
-    }
-
-    .project-card.visible .chat-bubble:nth-child(3) {
-        animation-delay: .4s;
-    }
-
-    .project-card.visible .chat-bubble:nth-child(4) {
-        animation-delay: .6s;
-    }
-
     @keyframes chatReveal {
         to {
             opacity: 1;
@@ -3651,7 +2975,6 @@ textarea {
    FINAL PROJECT FIXES
 ========================================================= */
 
-
 /* =========================================================
    1. STOP PAGE FROM SHIFTING HORIZONTALLY ON REFRESH
 ========================================================= */
@@ -3667,7 +2990,6 @@ body {
     overflow-x: hidden;
 }
 
-
 /* =========================================================
    2. PROJECT CARD HOVER
    Overrides the section-reveal transform
@@ -3679,7 +3001,6 @@ body {
         opacity 800ms ease;
 }
 
-
 /*
    JS adds .section-reveal to the cards.
    This rule needs higher specificity so hover wins.
@@ -3689,7 +3010,6 @@ body {
     transform:
         translateY(-12px) !important;
 }
-
 
 /* =========================================================
    3. IMAGE HOVER
@@ -3704,7 +3024,6 @@ body {
         translateZ(0);
 }
 
-
 /*
    Slight lift of the entire image frame
 */
@@ -3715,7 +3034,6 @@ body {
         scale(1.008);
 }
 
-
 /* =========================================================
    4. ACTUAL SCREENSHOT HOVER
 ========================================================= */
@@ -3724,7 +3042,6 @@ body {
     transition:
         transform 700ms cubic-bezier(.16, 1, .3, 1);
 }
-
 
 /*
    More visible than the previous 1.015.
@@ -3737,7 +3054,6 @@ body {
         scale(1.035);
 }
 
-
 /* =========================================================
    5. PROJECT ARROW
 ========================================================= */
@@ -3748,7 +3064,6 @@ body {
         color 300ms ease,
         transform 400ms cubic-bezier(.16, 1, .3, 1);
 }
-
 
 .project-card:hover .project-info a {
     background:
@@ -3762,25 +3077,9 @@ body {
         scale(1.12);
 }
 
-
 /* =========================================================
    6. CATEGORY PILL
 ========================================================= */
-
-.project-category {
-    transition:
-        transform 400ms cubic-bezier(.16, 1, .3, 1),
-        background 300ms ease,
-        color 300ms ease;
-}
-
-
-.project-card:hover .project-category {
-    transform:
-        translateY(-4px)
-        rotate(-2deg);
-}
-
 
 /* =========================================================
    7. PROJECT IMAGE FRAME
@@ -3796,7 +3095,6 @@ body {
     background:
         var(--cream);
 }
-
 
 /* =========================================================
    8. KEEP COMPLETE WEBSITE SCREENSHOT VISIBLE
@@ -3822,7 +3120,6 @@ body {
         var(--cream);
 }
 
-
 /* =========================================================
    9. THIRD PROJECT
 ========================================================= */
@@ -3840,7 +3137,6 @@ body {
     margin-right:
         auto !important;
 }
-
 
 /* =========================================================
    10. MOBILE
@@ -3860,7 +3156,6 @@ body {
     }
 
 }
-
 
 @media (max-width: 600px) {
 
@@ -3920,7 +3215,6 @@ body {
         background 250ms ease;
 }
 
-
 .project-cursor-active {
     width: 82px;
     height: 82px;
@@ -3930,7 +3224,6 @@ body {
 
     opacity: 1;
 }
-
 
 .project-cursor-active span {
     font-size: .58rem;
@@ -3945,7 +3238,6 @@ body {
 
     color: var(--black);
 }
-
 
 /* =========================================================
    DON'T SHOW CUSTOM CURSOR ON TOUCH
@@ -3973,7 +3265,6 @@ body {
     transition:
         transform 500ms cubic-bezier(.16, 1, .3, 1);
 }
-
 
 /* =========================================================
    PROJECT FRAME
@@ -4007,7 +3298,6 @@ body {
         transform 500ms cubic-bezier(.16, 1, .3, 1);
 }
 
-
 /* =========================================================
    PROJECT SCREENSHOT
 ========================================================= */
@@ -4033,7 +3323,6 @@ body {
         transform 700ms cubic-bezier(.16, 1, .3, 1);
 }
 
-
 /* =========================================================
    PROJECT HOVER — DESKTOP ONLY
 ========================================================= */
@@ -4057,28 +3346,13 @@ body {
 
 }
 
-
 /* =========================================================
    PROJECT CATEGORY
 ========================================================= */
 
-.project-category {
-    z-index: 5;
-
-    transition:
-        transform 400ms cubic-bezier(.16, 1, .3, 1);
-}
-
 @media (min-width: 651px) {
 
-    .project-card:hover .project-category {
-        transform:
-            translateY(-4px)
-            rotate(-2deg);
-    }
-
 }
-
 
 /* =========================================================
    PROJECT INFO
@@ -4093,7 +3367,6 @@ body {
     min-width: 0;
 }
 
-
 /* =========================================================
    THIRD PROJECT
 ========================================================= */
@@ -4106,7 +3379,6 @@ body {
     margin-left: auto !important;
     margin-right: auto !important;
 }
-
 
 /* =========================================================
    MOBILE
@@ -4123,7 +3395,6 @@ body {
         overflow: hidden;
     }
 
-
     .project-card,
     .project-card:nth-child(3) {
 
@@ -4138,7 +3409,6 @@ body {
         box-sizing: border-box;
     }
 
-
     .project-card .project-image {
 
         width: 100%;
@@ -4152,7 +3422,6 @@ body {
         box-sizing: border-box;
     }
 
-
     .project-card .project-image img {
 
         width: 100%;
@@ -4165,7 +3434,6 @@ body {
 
         transform: none;
     }
-
 
     /*
        Disable desktop hover transformations
@@ -4184,7 +3452,6 @@ body {
         transform: none;
     }
 
-
     .project-info {
 
         display: grid;
@@ -4200,7 +3467,6 @@ body {
             20px 0;
     }
 
-
     .project-info h3 {
 
         max-width: 100%;
@@ -4215,7 +3481,6 @@ body {
         line-height: .9;
     }
 
-
     .project-info p {
 
         max-width: 100%;
@@ -4224,7 +3489,6 @@ body {
 
         line-height: 1.6;
     }
-
 
     .project-info a {
 
