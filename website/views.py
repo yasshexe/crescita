@@ -1,96 +1,34 @@
-import re
+import logging
 
-from django.conf import settings
 from django.contrib import messages
-from django.core.mail import EmailMessage
 from django.shortcuts import redirect, render
 
+from .forms import LeadForm
 from .models import Lead
+from .services import send_lead_notification
 
 
-PROJECT_LINK_REPLACEMENTS = [
-    (
-        r'(<h3>\s*BHAUCHA\s*<br>\s*DHAKKA\s*</h3>.*?<a\s+)href="#contact"',
-        'https://bhaucha-dhakka.onrender.com/',
-    ),
-    (
-        r'(<h3>\s*TUPE\s*<br>\s*BROTHERS\s*<br>\s*ASSOCIATES\s*</h3>.*?<a\s+)href="#contact"',
-        'https://tupe-brothers-associates.onrender.com/',
-    ),
-    (
-        r'(<a\s+href=")#"(\s+class="social-card social-instagram")',
-        'https://www.instagram.com/crescita_media/',
-    ),
-    (
-        r'(<a\s+href=")#"(\s+class="social-card social-whatsapp")',
-        'https://wa.me/917058628004',
-    ),
-]
-
-
-def _add_project_links(response):
-    html = response.content.decode(response.charset)
-
-    for pattern, url in PROJECT_LINK_REPLACEMENTS:
-        if 'social-' in pattern:
-            replacement = rf'\1{url}" target="_blank" rel="noopener noreferrer"\2'
-        else:
-            replacement = rf'\1href="{url}" target="_blank" rel="noopener noreferrer"'
-
-        html = re.sub(pattern, replacement, html, count=1, flags=re.DOTALL)
-
-    response.content = html.encode(response.charset)
-    return response
-
-
-def _send_lead_notification(lead):
-    if not settings.ANYMAIL.get("RESEND_API_KEY"):
-        return False
-
-    services = ", ".join(lead.services) if lead.services else "Not specified"
-    body = (
-        "A new lead has been submitted on Crescita Media.\n\n"
-        f"Name: {lead.name}\n"
-        f"Email: {lead.email}\n"
-        f"Services: {services}\n"
-        f"Submitted: {lead.created_at:%d %b %Y, %I:%M %p}\n\n"
-        "Message:\n"
-        f"{lead.message}\n"
-    )
-
-    email = EmailMessage(
-        subject=f"New Crescita Lead — {lead.name}",
-        body=body,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        to=[settings.CONTACT_EMAIL],
-        reply_to=[lead.email],
-    )
-    email.send(fail_silently=True)
-    return True
+logger = logging.getLogger(__name__)
 
 
 def home(request):
-    if request.method == "POST":
-        name = request.POST.get("name", "").strip()
-        email = request.POST.get("email", "").strip()
-        message = request.POST.get("message", "").strip()
-        services = request.POST.getlist("service")
+    form = LeadForm(request.POST or None)
 
-        if name and email and message:
+    if request.method == "POST":
+        if form.is_valid():
             lead = Lead.objects.create(
-                name=name,
-                email=email,
-                services=services,
-                message=message,
+                name=form.cleaned_data["name"],
+                email=form.cleaned_data["email"],
+                services=form.cleaned_data["services"],
+                message=form.cleaned_data["message"],
             )
-            _send_lead_notification(lead)
+            send_lead_notification(lead)
             messages.success(request, "Thanks — we received your message.")
             return redirect("home")
 
-        messages.error(request, "Please fill in all required fields.")
+        messages.error(request, "Please check the required fields and try again.")
 
-    response = render(request, "website/home.html")
-    return _add_project_links(response)
+    return render(request, "website/home.html", {"form": form})
 
 
 def about(request):
